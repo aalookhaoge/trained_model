@@ -1,0 +1,7 @@
+tensorflow==2.13.0
+keras==2.13.1
+mediapipe==0.10.9
+opencv-python
+scikit-learn
+protobuf==3.20.3
+numpy==1.24.3
