@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { predictGesture, PredictionResponse } from "@/lib/PredictionService";
+import { predictGesture, PredictionResponse, API_URL } from "@/lib/PredictionService";
 import { ArrowLeft, Camera, Activity, Shield, Brain, MessageSquare, RefreshCw } from "lucide-react";
 
 const ClinicInterface = () => {
@@ -98,7 +98,7 @@ const ClinicInterface = () => {
 
   const generateSentence = async () => {
     try {
-      const response = await fetch("http://localhost:5000/get_sentence");
+      const response = await fetch(`${API_URL}/get_sentence`);
       const data = await response.json();
       setSentence(data.sentence);
     } catch (err) {
@@ -108,7 +108,7 @@ const ClinicInterface = () => {
 
   const clearHistory = async () => {
     try {
-      await fetch("http://localhost:5000/clear_history", { method: "POST" });
+      await fetch(`${API_URL}/clear_history`, { method: "POST" });
       setHistory([]);
       setSentence("");
       setPrediction(null);
